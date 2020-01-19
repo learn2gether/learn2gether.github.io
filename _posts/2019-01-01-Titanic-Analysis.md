@@ -155,6 +155,7 @@ train.isnull().any().sum()
 ```
 
 ```python
+# msno is a missing data visualization module for Python.
 msno.bar(train)
 ```
 ![alt text](https://learn2gether.github.io/images/posts/titanic/missing_values.png "missing values")
@@ -169,6 +170,7 @@ validation1 = validation.drop(columns=['PassengerId', 'Ticket','Name','Embarked'
 
 
 ```python
+# look at the correlation between features
 corr1 = train1.corr()
 
 plt.figure(figsize=(6,3))
@@ -176,16 +178,7 @@ corr_heatmap1 = sns.heatmap(corr1, annot=True)
 bottom, top = corr_heatmap1.get_ylim()
 corr_heatmap1.set_ylim(bottom + 0.5, top - 0.5)
 ```
-
-
-
-
-    (6.0, 0.0)
-
-
-
-
-![png](Titanic_files/Titanic_16_1.png)
+![alt text](https://learn2gether.github.io/images/posts/titanic/corr.png "missing values")
 
 
 
