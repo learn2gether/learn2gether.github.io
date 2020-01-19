@@ -7,6 +7,9 @@ tags: [machine learning, data science, Credit Default Analysis]
 excerpt: "A case study on Credit Default Analysis."
 ---
 
+![alt text](https://learn2gether.github.io/images/posts/creditDefault/creditCard.png "Credit Card")
+
+
 # Introduction
 <div style="text-align: justify"> The objective of this report is to build a credit default model for a retail bank based on provided customer dataset. This dataset consists of 13444 records with 14 features. The main goal is to identify behaviours of defaulters. Then, the bank could provide credit card services based on customers’ characteristics to reduce losses. The analysis is based on Python and a few supported libraries. </div>
 
@@ -200,6 +203,7 @@ truncatedData['DEFAULT'].value_counts()/truncatedData['DEFAULT'].count()
     Name: DEFAULT, dtype: float64
 
 ![alt text](https://learn2gether.github.io/images/posts/creditDefault/defaulter.png "Credit Defaulters")
+
 
 ## Card Holders
 
