@@ -8,7 +8,7 @@ excerpt: "A case study on Credit Default Analysis."
 ---
 
 # Introduction
-The objective of this report is to build a credit default model for a retail bank based on provided customer dataset. This dataset consists of 13444 records with 14 features. The main goal is to identify behaviours of defaulters. Then, the bank could provide credit card services based on customers’ characteristics to reduce losses. The analysis is based on Python and a few supported libraries.
+<div style="text-align: justify"> The objective of this report is to build a credit default model for a retail bank based on provided customer dataset. This dataset consists of 13444 records with 14 features. The main goal is to identify behaviours of defaulters. Then, the bank could provide credit card services based on customers’ characteristics to reduce losses. The analysis is based on Python and a few supported libraries. </div>
 
 # Data Exploration
 
@@ -173,7 +173,8 @@ msno.matrix(data)
 
 ![alt text](https://learn2gether.github.io/images/posts/creditDefault/missingValue.png "missing values")
 
-We can know that all missing values come from people who do not own credit card service, so they do not have credit card transaction records. Thus, we should remove these observations to reflect the truth. However, if these two features are not significant on truncated data. I will consider drop these two variables and build a model based on the whole population sample later. 
+<div style="text-align: justify"> We can know that all missing values come from people who do not own credit card service, so they do not have credit card transaction records. Thus, we should remove these observations to reflect the truth. However, if these two features are not significant on truncated data. I will consider drop these two variables and build a model based on the whole population sample later. </div>
+
 
 ```python
 # Remove all observations with missing values.
