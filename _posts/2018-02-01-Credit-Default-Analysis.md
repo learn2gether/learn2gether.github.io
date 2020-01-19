@@ -16,15 +16,15 @@ excerpt: "A case study on Credit Default Analysis."
 - [EDA](#eda)
   * [Card Holders](#card-holders)
   * [Age](#age)
-  * [Majordrg: Number of major derogatory reports (loan payments that are 60 days overdue)](#majordry)
-  * [MINORDRG: Number of minor derogatory reports (loan payments that are less than 60 days overdue)](#minordrg)
-  * [Income: Monthly income (divided by 10,000)](#income)
-  * [Exp_Inc: Ratio of monthly credit card expenditure to yearly income](#exp_inc)
+  * [Majordrg](#majordry)
+  * [MINORDRG](#minordrg)
+  * [Income](#income)
+  * [Exp_Inc](#exp_inc)
 - [Feature Selection](#feature-selection)
 - [Data Cleaning](#data-cleaning)
 - [Building Models](#building-models)
   * [Logit Regression](#logit-regression)
-  * [Predicted probabilities and goodness of fit measures](#prediction)
+  * [Predicted probabilities and goodness of fit measures](#predicted-probabilities-and-goodness-of-fit-measures)
 
 
 # Introduction
@@ -401,7 +401,9 @@ sns.countplot(x='Age_labeled',data=truncatedData, hue='DEFAULT')
 
 ![alt text](https://learn2gether.github.io/images/posts/creditDefault/ageGroup.png "Age Group")
 
-## Majordrg: Number of major derogatory reports (loan payments that are 60 days overdue)
+## Majordrg
+
+Majordrg: Number of major derogatory reports (loan payments that are 60 days overdue)
 
 ```python
 truncatedData['MAJORDRG'].value_counts()
@@ -450,7 +452,9 @@ print(truncatedData[truncatedData['MAJORDRG']==6]['DEFAULT'].value_counts()/trun
 
 <div style="text-align: justify"> According to analysis above, default and the number of major derogatory report has a positive correlation. People are more likely to default along with the increasing number of major derogatory report. Thus, once customer has the first major derogatory report, the bank should re-evaluate the customer to determine whether suspend or terminate his her credit card service. </div>
 
-## MINORDRG: Number of minor derogatory reports (loan payments that are less than 60 days overdue)
+## MINORDRG
+
+MINORDRG: Number of minor derogatory reports (loan payments that are less than 60 days overdue)
 
 ```python
 truncatedData['MINORDRG'].value_counts()
@@ -502,7 +506,9 @@ print(truncatedData[truncatedData['MINORDRG']==6]['DEFAULT'].value_counts()/trun
 
 <div style="text-align: justify"> The result of the analysis of minor derogatory report is quite similar with the major derogatory report. Thus, the bank also should re-evaluate customers if they have minor derogatory report as well. </div>
 
-## Income: Monthly income (divided by 10,000)
+## Income
+
+Income: Monthly income (divided by 10,000)
 
 ```python
 # Distribution of income
@@ -573,7 +579,9 @@ sns.countplot(x='income level', data=truncatedData, hue='DEFAULT')
 
 According to above analysis, we can conclude that customers with low level of income are most likely to default.
 
-## Exp_Inc: Ratio of monthly credit card expenditure to yearly income
+## Exp_Inc
+
+Exp_Inc: Ratio of monthly credit card expenditure to yearly income
 
 <div style="text-align: justify"> The majority has ratio of monthly credit card expenditure to yearly income less than one twelfth, which means that their income and spending are balanced. However, they are still a large number of people who could not afford their bills, and these people are more likely to default. Thus, the bank should pay more attention on these people to avoid loss. </div>
 
