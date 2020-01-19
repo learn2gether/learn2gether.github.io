@@ -181,13 +181,9 @@ corr_heatmap1.set_ylim(bottom + 0.5, top - 0.5)
 ![alt text](https://learn2gether.github.io/images/posts/titanic/corr1.png "correlation")
 
 
-
 ```python
 train1.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -287,21 +283,7 @@ train1.head()
 plt.figure(figsize=(6,3))
 train1[['Pclass','Fare']].plot(kind='scatter', x='Pclass',y='Fare', color='blue',alpha=0.5, figsize=(10,7))
 ```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x115713a90>
-
-
-
-
-    <Figure size 432x216 with 0 Axes>
-
-
-
-![png](Titanic_files/Titanic_18_2.png)
-
+![alt text](https://learn2gether.github.io/images/posts/titanic/pclass_fare.png "pclass vs fare")
 
 
 ```python
