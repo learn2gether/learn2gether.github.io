@@ -7,7 +7,7 @@ tags: [machine learning, data science, Credit Default Analysis]
 excerpt: "A case study on Credit Default Analysis."
 ---
 
-![alt text](https://learn2gether.github.io/images/posts/creditDefault/creditCard.jpeg "Credit Card")
+![alt text](https://learn2gether.github.io/images/posts/creditDefault/credit_card.jpg "Credit Card")
 
 
 # Introduction
