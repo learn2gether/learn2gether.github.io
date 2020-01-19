@@ -7,94 +7,31 @@ tags: [machine learning, data science]
 excerpt: "Titanic Analysis by using machine learning algorithm such as Logistic Regression, Naive Bayes, Support Vector Machine, Decision Tree and Random Forest."
 ---
 
-## Dataset
+# Dataset
 You can download the data from [Kaggle competition website](https://www.kaggle.com/c/titanic/data).
 
-
 ```python
-
-```
-
-# required package
-
-
-```python
-# Import packages
-import numpy as np
-import pandas as pd
-import os
-import sklearn
-import shutil
-import wget
-import missingno as msno
-import matplotlib.pyplot as plt
-import seaborn as sns
-%matplotlib inline
-# linear relationship
-from scipy.stats import pearsonr
-# non-linear
-from scipy.stats import spearmanr
-
-from sklearn.model_selection import cross_val_score
-from sklearn.tree import DecisionTreeClassifier
-```
-
-
-```python
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
-```
-
-# dataset
-
-
-```python
-# Download titanic train dataset
-output = 'titanic_train.csv'
-file = wget.download('https://drive.google.com/uc?authuser=0&id=12_P1znF91bWIM3ymS3PNslxpAOC7eUj_&export=download', output)
-# Overwrite file if already exists
-if os.path.exists(output):
-    shutil.move(file,output)
-# Download titanic test dataset (without labels)
-output = 'titanic_test.csv'
-file = wget.download('https://drive.google.com/uc?authuser=0&id=1Qn8R2Zm2U8-r07fT51bhozMUaOyKRkfS&export=download', output)
-# Overwrite file if already exists
-if os.path.exists(output):
-    shutil.move(file,output)
-```
-
-
-```python
+# read the training data
 all_train = pd.read_csv('titanic_train.csv')
 ```
 
-
 ```python
+# look at the shape of the data
 all_train.shape
 ```
 
-
-
-
-    (891, 12)
-
-
-
-
 ```python
-# Read in red and white wine datasets
+# split the training set into two parts.
 train = pd.read_csv('titanic_train.csv', sep=',').loc[0:712,:]
+# The validation set can be used to tune models.
 validation = pd.read_csv('titanic_train.csv', sep=',').loc[713:890,:]
 test = pd.read_csv('titanic_test.csv', sep=',')
 ```
 
-
 ```python
+# have a look at the data
 train.head()
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -209,166 +146,18 @@ train.head()
 </div>
 
 
+# Feature Selection
 
 
 ```python
-test.head()
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PassengerId</th>
-      <th>Pclass</th>
-      <th>Name</th>
-      <th>Sex</th>
-      <th>Age</th>
-      <th>SibSp</th>
-      <th>Parch</th>
-      <th>Ticket</th>
-      <th>Fare</th>
-      <th>Cabin</th>
-      <th>Embarked</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>892</td>
-      <td>3</td>
-      <td>Kelly, Mr. James</td>
-      <td>male</td>
-      <td>34.5</td>
-      <td>0</td>
-      <td>0</td>
-      <td>330911</td>
-      <td>7.8292</td>
-      <td>NaN</td>
-      <td>Q</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>893</td>
-      <td>3</td>
-      <td>Wilkes, Mrs. James (Ellen Needs)</td>
-      <td>female</td>
-      <td>47.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>363272</td>
-      <td>7.0000</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>894</td>
-      <td>2</td>
-      <td>Myles, Mr. Thomas Francis</td>
-      <td>male</td>
-      <td>62.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>240276</td>
-      <td>9.6875</td>
-      <td>NaN</td>
-      <td>Q</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>895</td>
-      <td>3</td>
-      <td>Wirz, Mr. Albert</td>
-      <td>male</td>
-      <td>27.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>315154</td>
-      <td>8.6625</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>896</td>
-      <td>3</td>
-      <td>Hirvonen, Mrs. Alexander (Helga E Lindqvist)</td>
-      <td>female</td>
-      <td>22.0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3101298</td>
-      <td>12.2875</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-# feature selection
-
-
-```python
+# looking at missing values
 train.isnull().any().sum()
 ```
-
-
-
-
-    3
-
-
-
-
-```python
-train.columns
-```
-
-
-
-
-    Index(['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp',
-           'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked'],
-          dtype='object')
-
-
-
 
 ```python
 msno.bar(train)
 ```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x115410ef0>
-
-
-
-
-![png](Titanic_files/Titanic_14_1.png)
-
+![alt text](https://learn2gether.github.io/images/posts/titanic/missing_values.png "missing values")
 
 
 ```python
