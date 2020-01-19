@@ -12,7 +12,7 @@ excerpt: "A case study on Credit Default Analysis."
 
 # Introduction
 <div style="text-align: justify"> The objective of this report is to build a credit default model for a retail bank based on provided customer dataset. This dataset consists of 13444 records with 14 features. The main goal is to identify behaviours of defaulters. Then, the bank could provide credit card services based on customers’ characteristics to reduce losses. The analysis is based on Python and a few supported libraries. </div>
-
+<br />
 # Data Exploration
 
 ```python
@@ -144,7 +144,7 @@ data = pd.read_csv('credit_data.txt', sep=",", na_values=missing_values)
   </tbody>
 </table>
 </div>
-
+<br />
 # Handling Missing Values
 
 ```python
@@ -183,10 +183,10 @@ msno.matrix(data)
 # Remove all observations with missing values.
 truncatedData = data[~data['SPENDING'].isnull()]
 ```
-
+<br />
 # EDA
 
-The following diagram reflects the distribution of Default. By observing the whole sample population, we can see that defaulter is the minority which is less than ten percents. This figure is representative in the real world. However, the data is highly imbalanced, which may make the model overfitting the majority.
+<div style="text-align: justify"> The following diagram reflects the distribution of Default. By observing the whole sample population, we can see that defaulter is the minority which is less than ten percents. This figure is representative in the real world. However, the data is highly imbalanced, which may make the model overfitting the majority. </div>
 
 ```python
 sns.countplot(x=truncatedData['DEFAULT'],data=truncatedData)
@@ -207,7 +207,7 @@ truncatedData['DEFAULT'].value_counts()/truncatedData['DEFAULT'].count()
 
 ## Card Holders
 
-We can see that if people have major derogatory reports greater than 5, it is hard to be accepted by credit card service. Thus, derogatory report is the marjor indicator to apply credit card successfully.
+<div style="text-align: justify"> We can see that if people have major derogatory reports greater than 5, it is hard to be accepted by credit card service. Thus, derogatory report is the marjor indicator to apply credit card successfully. </div>
 
 ```python
 pd.crosstab(data['DEFAULT'],data['MAJORDRG'])
@@ -350,7 +350,7 @@ truncatedData[truncatedData['AGE']<18]['AGE'].count()
 
     38
 
-There are 38 customers under 18 years old. According to my research people must be at least 18 years of age to apply for a credit card in Australia. However, there are 38 people under 18 years old who owns credit card in this dataset, which is not appropriate. This may be caused by system errors. 
+<div style="text-align: justify"> people must be at least 18 years of age to apply for a credit card in Australia. However, there are 38 people under 18 years old who owns credit card in this dataset, which is not appropriate. This may be caused by system errors. </div>
 
 ```python
 # split into different age group
@@ -428,7 +428,7 @@ print(truncatedData[truncatedData['MAJORDRG']==6]['DEFAULT'].value_counts()/trun
     Name: DEFAULT, dtype: float64
 
 
-According to analysis above, default and the number of major derogatory report has a positive correlation. People are more likely to default along with the increasing number of major derogatory report. Thus, once customer has the first major derogatory report, the bank should re-evaluate the customer to determine whether suspend or terminate his her credit card service.
+<div style="text-align: justify"> According to analysis above, default and the number of major derogatory report has a positive correlation. People are more likely to default along with the increasing number of major derogatory report. Thus, once customer has the first major derogatory report, the bank should re-evaluate the customer to determine whether suspend or terminate his her credit card service. </div>
 
 ## MINORDRG: Number of minor derogatory reports (loan payments that are less than 60 days overdue)
 
@@ -480,7 +480,7 @@ print(truncatedData[truncatedData['MINORDRG']==6]['DEFAULT'].value_counts()/trun
 
 
 
-The result of the analysis of minor derogatory report is quite similar with the major derogatory report. Thus, the bank also should re-evaluate customers if they have minor derogatory report as well.
+<div style="text-align: justify"> The result of the analysis of minor derogatory report is quite similar with the major derogatory report. Thus, the bank also should re-evaluate customers if they have minor derogatory report as well. </div>
 
 ## Income: Monthly income (divided by 10,000)
 
@@ -555,7 +555,7 @@ According to above analysis, we can conclude that customers with low level of in
 
 ## Exp_Inc: Ratio of monthly credit card expenditure to yearly income
 
-The majority has ratio of monthly credit card expenditure to yearly income less than one twelfth, which means that their income and spending are balanced. However, they are still a large number of people who could not afford their bills, and these people are more likely to default. Thus, the bank should pay more attention on these people to avoid loss.
+<div style="text-align: justify"> The majority has ratio of monthly credit card expenditure to yearly income less than one twelfth, which means that their income and spending are balanced. However, they are still a large number of people who could not afford their bills, and these people are more likely to default. Thus, the bank should pay more attention on these people to avoid loss. </div>
 
 ```python
 plt.figure(figsize=(8,6))
@@ -577,7 +577,7 @@ truncatedData[truncatedData['EXP_INC']>(1/12)]['DEFAULT'].value_counts()
 
 # Feature Selection
 
-According to the correlation heatmap, we can see that LOGSPEND and CARDHLDR are highly positively correlated (0.85). ADEPCNT and INCPER are relatively negatively correlated (-0.55). EXP_INC and SPENDING are higly positively correlated (0.86). EXP_INC and LOGSPEND are relatively positively correlated (0.62). SPENDING and LOGSPEND are relatively positively correlated (0.62)
+<div style="text-align: justify"> According to the correlation heatmap, we can see that LOGSPEND and CARDHLDR are highly positively correlated (0.85). ADEPCNT and INCPER are relatively negatively correlated (-0.55). EXP_INC and SPENDING are higly positively correlated (0.86). EXP_INC and LOGSPEND are relatively positively correlated (0.62). SPENDING and LOGSPEND are relatively positively correlated (0.62). </div>
 
 ```python
 # Calculate correlations
@@ -592,7 +592,7 @@ sns.heatmap(corr, annot=True, linewidths=0.5, cmap='coolwarm')
 
 # Data Cleaning
 
-We should split our dataset into response variable and predictor variables before building models. We will use DEFAULT as our response variable and all the remaining variable as predictors. We should drop CARDHLDR as there is only one category. First, we will build models based on data with original features.
+<div style="text-align: justify"> We should split our dataset into response variable and predictor variables before building models. We will use DEFAULT as our response variable and all the remaining variable as predictors. We should drop CARDHLDR as there is only one category. First, we will build models based on data with original features. </div>
 
 ```python
 Y = truncatedData['DEFAULT']
@@ -603,7 +603,7 @@ X = truncatedData.drop(['CARDHLDR','Age_labeled','acadmos','income level','DEFAU
 ```
 
 
-Then we use the statsmodels function to fit our models with our response variable and design matrix. The statsmodels package is unique from other languages and packages as it does not include an intercept term by default. This needs to be manually set.
+<div style="text-align: justify"> Then we use the statsmodels function to fit our models with our response variable and design matrix. The statsmodels package is unique from other languages and packages as it does not include an intercept term by default. This needs to be manually set. </div>
 
 
 
@@ -764,6 +764,7 @@ X.astype(float).info()
     dtypes: float64(13)
     memory usage: 1.1 MB
 
+<br />
 # Building models
 ## Logit Regression
 
@@ -861,18 +862,18 @@ logit_model.summary2()
 </tr>
 </table>
 
-According to above table, we can interpret some outcome outputs. There is a list of log likelihoods at each iteration. The first iteration is the log likelihood of the empty model without any predictors. At the next iteration, the predictor is considered in the model. At Each iteration, the log likelihood increases untill the maximum value. Pseudo R square reflects how well the model fit the data. If this value is closed to 1, it means that the model fit the data very well. However, pseduo R square values in both our probit and logit models are quite low, and we do not have a very goodness-of-fit for these models. 
+<div style="text-align: justify"> According to above table, we can interpret some outcome outputs. There is a list of log likelihoods at each iteration. The first iteration is the log likelihood of the empty model without any predictors. At the next iteration, the predictor is considered in the model. At Each iteration, the log likelihood increases untill the maximum value. Pseudo R square reflects how well the model fit the data. If this value is closed to 1, it means that the model fit the data very well. However, pseduo R square values in both our probit and logit models are quite low, and we do not have a very goodness-of-fit for these models. </div>
 
-It appears that there are some predictors which are statistically significant (p-value is less than 0.05) including AGE, ADEPCNT, MAJORDRG, MINORDRG, OWNRENT, INCOME, EXP_INC and LOGSPEND.
+<div style="text-align: justify"> It appears that there are some predictors which are statistically significant (p-value is less than 0.05) including AGE, ADEPCNT, MAJORDRG, MINORDRG, OWNRENT, INCOME, EXP_INC and LOGSPEND. </div>
 
 ![alt text](https://learn2gether.github.io/images/posts/creditDefault/logitModel.png "Logit Regression")
 
-By interpreting the coefficient, we normally interpret the sign of the coefficient but not the magnitude. The magnitude cannot be interpreted using the coefficient because different models have differnt scales of coeffcients. If the sign of the coefficient is positive, instead of saying higher predictor variable will lead to higher response variable, we will interpret that the response variable is more likely to be the category of 1. On the contrary, we will say that the response variable is less likely to be the category of 1 if the sign of the coefficient is negative. For example, as people get older, they are less likely to default.
+<div style="text-align: justify"> By interpreting the coefficient, we normally interpret the sign of the coefficient but not the magnitude. The magnitude cannot be interpreted using the coefficient because different models have differnt scales of coeffcients. If the sign of the coefficient is positive, instead of saying higher predictor variable will lead to higher response variable, we will interpret that the response variable is more likely to be the category of 1. On the contrary, we will say that the response variable is less likely to be the category of 1 if the sign of the coefficient is negative. For example, as people get older, they are less likely to default. </div>
 
 ###  Predicted probabilities and goodness of fit measures
 
 
-In order to find out how well we predict, we can look at predictions probabilities produced by this model. The accuracy is above 90 percent for both probit and logit models which is actually perfect. However, it predicts almost all people who do not default but not a single defaulter. In fact, the data is highly imbalanced. Thus, the result reflects overfitting for both probit and logit models. 
+<div style="text-align: justify"> In order to find out how well we predict, we can look at predictions probabilities produced by this model. The accuracy is above 90 percent for both probit and logit models which is actually perfect. However, it predicts almost all people who do not default but not a single defaulter. In fact, the data is highly imbalanced. Thus, the result reflects overfitting for both probit and logit models. </div>
 
 
 ```python
@@ -891,7 +892,7 @@ logit_model.pred_table()
     array([[9.502e+03, 1.000e+00],
            [9.960e+02, 0.000e+00]])
 
-However, the magnitude of marginal effects can be interpreted. The marginal effects reflect the change in the probability of y=1 given a 1 unit change in an independent variable x. An increase in x increases (decreases) the probability that y=1 by the marginal effect expressed as a percent. For dummy independent variables, the marginal effect is expressed in comparision to the base category (x=0). For example, if someone is retired, they could be three percent more likely to have a insurance compared to those who are not retired. For continuous independent variable, the marginal effect is expressed for a one-unit change in x. For example, for each additional year of education, people are so many percent more likely to have insurance. Thus, we interpret both the sign and magnitude of the marginal effects
+<div style="text-align: justify"> However, the magnitude of marginal effects can be interpreted. The marginal effects reflect the change in the probability of y=1 given a 1 unit change in an independent variable x. An increase in x increases (decreases) the probability that y=1 by the marginal effect expressed as a percent. For dummy independent variables, the marginal effect is expressed in comparision to the base category (x=0). For example, if someone is retired, they could be three percent more likely to have a insurance compared to those who are not retired. For continuous independent variable, the marginal effect is expressed for a one-unit change in x. For example, for each additional year of education, people are so many percent more likely to have insurance. Thus, we interpret both the sign and magnitude of the marginal effects. </div>
 
 
 ```python
