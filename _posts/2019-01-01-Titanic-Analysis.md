@@ -691,6 +691,7 @@ y_train = train5.iloc[:, 0:1]
 
 
 ```python
+# double check whether there are missing values.
 X_train.info()
 ```
 
@@ -707,27 +708,6 @@ X_train.info()
 
 
 
-```python
-X_train.shape
-```
-
-
-
-
-    (713, 1)
-
-
-
-
-```python
-y_train.shape
-```
-
-
-
-
-    (713, 5)
-
 
 
 
@@ -742,34 +722,10 @@ y=y_train.to_numpy()
 
 
 ```python
-
-```
-
-
-```python
 X_valid = validation5.iloc[:, 1:].to_numpy()
 y_valid = validation5.iloc[:, 0:1].to_numpy()
 ```
 
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
 
 ## logistic regression
 
@@ -782,12 +738,6 @@ from sklearn.linear_model import LogisticRegression
 ```python
 lr = LogisticRegression().fit(X,y)
 ```
-
-    /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sklearn/linear_model/logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-      FutureWarning)
-    /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sklearn/utils/validation.py:724: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
-
 
 
 ```python
@@ -826,21 +776,6 @@ lr_pred = lr.predict(test5.to_numpy())
 ```
 
 
-```python
-# Save predictions
-np.savetxt("TitanicPredictions1_Yifei.csv", lr_pred, delimiter=",")
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
 ## random forest
 
 
@@ -857,23 +792,6 @@ rfm = RandomForestClassifier(n_estimators=70, oob_score=True, n_jobs=-1, random_
 ```python
 rfm.fit(X,y)
 ```
-
-    /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/ipykernel_launcher.py:1: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().
-      """Entry point for launching an IPython kernel.
-
-
-
-
-
-    RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-                           max_depth=None, max_features=None, max_leaf_nodes=None,
-                           min_impurity_decrease=0.0, min_impurity_split=None,
-                           min_samples_leaf=30, min_samples_split=2,
-                           min_weight_fraction_leaf=0.0, n_estimators=70, n_jobs=-1,
-                           oob_score=True, random_state=101, verbose=0,
-                           warm_start=False)
-
-
 
 
 ```python
@@ -907,15 +825,6 @@ rfm_pred = rfm.predict(test5.to_numpy())
 ```
 
 
-```python
-# Save predictions
-np.savetxt("TitanicPredictions2_Yifei.csv", rfm_pred, delimiter=",")
-```
-
-
-```python
-
-```
 
 ## Naive Bayes
 
@@ -928,11 +837,6 @@ from sklearn.naive_bayes import GaussianNB
 ```python
 nb = GaussianNB().fit(X,y)
 ```
-
-    /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sklearn/utils/validation.py:724: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
-
-
 
 ```python
 nb_predTest = nb.predict(X_valid)
@@ -961,16 +865,6 @@ nb_pred = nb.predict(test5.to_numpy())
 ```
 
 
-```python
-# Save predictions
-np.savetxt("TitanicPredictions3_Yifei.csv", nb_pred, delimiter=",")
-```
-
-
-```python
-
-```
-
 ## decision tree
 
 
@@ -987,18 +881,6 @@ dtree = DecisionTreeClassifier(max_depth=10, random_state=101, max_features=None
 ```python
 dtree.fit(X,y)
 ```
-
-
-
-
-    DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=10,
-                           max_features=None, max_leaf_nodes=None,
-                           min_impurity_decrease=0.0, min_impurity_split=None,
-                           min_samples_leaf=15, min_samples_split=2,
-                           min_weight_fraction_leaf=0.0, presort=False,
-                           random_state=101, splitter='best')
-
-
 
 
 ```python
@@ -1028,16 +910,6 @@ dtree_pred = dtree.predict(test5.to_numpy())
 ```
 
 
-```python
-# Save predictions
-np.savetxt("TitanicPredictions4_Yifei.csv", dtree_pred, delimiter=",")
-```
-
-
-```python
-
-```
-
 ## support vector machine
 
 
@@ -1054,21 +926,6 @@ svm = SVC(kernel='linear', C=0.025, random_state=101)
 ```python
 svm.fit(X,y)
 ```
-
-    /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sklearn/utils/validation.py:724: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      y = column_or_1d(y, warn=True)
-
-
-
-
-
-    SVC(C=0.025, cache_size=200, class_weight=None, coef0=0.0,
-        decision_function_shape='ovr', degree=3, gamma='auto_deprecated',
-        kernel='linear', max_iter=-1, probability=False, random_state=101,
-        shrinking=True, tol=0.001, verbose=False)
-
-
-
 
 ```python
 svm_predTest = svm.predict(X_valid)
@@ -1094,21 +951,5 @@ print(classification_report(y_valid,svm_predTest))
 ```python
 # submission
 svm_pred = svm.predict(test5.to_numpy())
-```
-
-
-```python
-# Save predictions
-np.savetxt("TitanicPredictions5_Yifei.csv", svm_pred, delimiter=",")
-```
-
-
-```python
-
-```
-
-
-```python
-
 ```
 
