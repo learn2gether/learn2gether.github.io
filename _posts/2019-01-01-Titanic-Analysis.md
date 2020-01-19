@@ -8,10 +8,13 @@ excerpt: "Titanic Analysis by using machine learning algorithm such as Logistic 
 ---
 
 - [Dataset](#dataset)
-- [Feature Selection and Feature Engineering]
-(#feature-selection-and-feature-engineering)
+- [Feature Selection and Feature Engineering](#feature-selection-and-feature-engineering)
 - [Prediction](#prediction)
   * [Logistic Regression](#logistic-regression)
+  * [Random Forest](#random-forest)
+  * [Naive Bayes](#naive-bayes)
+  * [Decision Tree](#decision-tree)
+  * [Support Vector Machine](#support-vector-machine)
 
 # Dataset
 You can download the data from [Kaggle competition website](https://www.kaggle.com/c/titanic/data).
@@ -782,7 +785,7 @@ lr_pred = lr.predict(test5.to_numpy())
 ```
 
 
-## random forest
+## Random Forest
 
 
 ```python
@@ -871,7 +874,7 @@ nb_pred = nb.predict(test5.to_numpy())
 ```
 
 
-## decision tree
+## Decision Tree
 
 
 ```python
@@ -916,7 +919,7 @@ dtree_pred = dtree.predict(test5.to_numpy())
 ```
 
 
-## support vector machine
+## Support Vector Machine
 
 
 ```python
