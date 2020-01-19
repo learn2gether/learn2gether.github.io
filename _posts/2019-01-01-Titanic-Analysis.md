@@ -7,7 +7,8 @@ tags: [machine learning, data science]
 excerpt: "Titanic Analysis by using machine learning algorithm such as Logistic Regression, Naive Bayes, Support Vector Machine, Decision Tree and Random Forest."
 ---
 
-Python code block:
+## Dataset
+You can download the data from [Kaggle competition website](https://www.kaggle.com/c/titanic/data).
 ```python
 # Download titanic train dataset
 output = 'titanic_train.csv'
