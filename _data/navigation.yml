@@ -3,7 +3,7 @@ main:
   - title: "About"
     url: https://learn2gether.github.io/about/
   - title: "Machine Learning"
-    url: /machine-learning/
+    url: https://learn2gether.github.io/machine-learning/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
