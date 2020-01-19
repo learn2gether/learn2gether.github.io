@@ -8,10 +8,10 @@ excerpt: "Titanic Analysis by using machine learning algorithm such as Logistic 
 ---
 
 - [Dataset](#dataset)
-- [Feature_Selection_and_Feature_Engineering]
-(#Feature Selection and Feature Engineering)
-- [Prediction](#Prediction)
-  * [Logistic-Regression](#Logistic Regression)
+- [Feature Selection and Feature Engineering]
+(#feature-selection-and-feature-engineering)
+- [Prediction](#prediction)
+  * [Logistic Regression](#logistic-regression)
 
 # Dataset
 You can download the data from [Kaggle competition website](https://www.kaggle.com/c/titanic/data).
