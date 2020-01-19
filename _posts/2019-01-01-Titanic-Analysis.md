@@ -178,7 +178,7 @@ corr_heatmap1 = sns.heatmap(corr1, annot=True)
 bottom, top = corr_heatmap1.get_ylim()
 corr_heatmap1.set_ylim(bottom + 0.5, top - 0.5)
 ```
-![alt text](https://learn2gether.github.io/images/posts/titanic/corr.png "missing values")
+![alt text](https://learn2gether.github.io/images/posts/titanic/corr1.png "correlation")
 
 
 
