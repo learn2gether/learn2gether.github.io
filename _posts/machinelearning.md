@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Machine Learning Posts by Tags"
+title: "Machine Learning"
 permalink: /machine-learning/
 header:
     image: "/images/perth.jpg"
