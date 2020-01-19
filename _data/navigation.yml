@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "About"
-    url: https://learn2gether.github.io/about/
+    url: /about/
   - title: "Machine Learning"
     url: https://learn2gether.github.io/machine-learning/
   # - title: "About"
