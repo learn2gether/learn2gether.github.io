@@ -7,6 +7,8 @@ tags: [machine learning, data science]
 excerpt: "Titanic Analysis by using machine learning algorithm such as Logistic Regression, Naive Bayes, Support Vector Machine, Decision Tree and Random Forest."
 ---
 
+![alt text](https://learn2gether.github.io/images/posts/titanic/titanic.jpg "titanic")
+
 - [Dataset](#dataset)
 - [Feature Selection and Feature Engineering](#feature-selection-and-feature-engineering)
 - [Prediction](#prediction)
@@ -15,6 +17,8 @@ excerpt: "Titanic Analysis by using machine learning algorithm such as Logistic 
   * [Naive Bayes](#naive-bayes)
   * [Decision Tree](#decision-tree)
   * [Support Vector Machine](#support-vector-machine)
+
+<br />
 
 # Dataset
 You can download the data from [Kaggle competition website](https://www.kaggle.com/c/titanic/data).
@@ -154,6 +158,7 @@ train.head()
 </table>
 </div>
 
+<br />
 
 # Feature Selection and Feature Engineering
 
@@ -312,7 +317,7 @@ test2['gender'] = test2['Sex'].apply(lambda x : 1 if x=='male' else 2)
 ```
 
 
-not everyone has Cabin, so we assign NaN as 0, people who have cabin as 1
+<div style="text-align: justify"> Not everyone has Cabin, so we assign NaN as 0, people who have cabin as 1 </div>
 
 
 ```python
@@ -519,6 +524,8 @@ train5 = train4.drop(columns=['Sex'])
 test5 = test4.drop(columns=['Sex'])
 validation5 = validation4.drop(columns=['Sex'])
 ```
+
+<br />
 
 # Prediction
 
