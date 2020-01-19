@@ -16,7 +16,7 @@ excerpt: "A case study on Credit Default Analysis."
 - [EDA](#eda)
   * [Card Holders](#card-holders)
   * [Age](#age)
-  * [Majordrg](#majordry)
+  * [MAJORDRY](#majordry)
   * [MINORDRG](#minordrg)
   * [Income](#income)
   * [Exp_Inc](#exp_inc)
@@ -401,7 +401,7 @@ sns.countplot(x='Age_labeled',data=truncatedData, hue='DEFAULT')
 
 ![alt text](https://learn2gether.github.io/images/posts/creditDefault/ageGroup.png "Age Group")
 
-## Majordrg
+## MAJORDRY
 
 Majordrg: Number of major derogatory reports (loan payments that are 60 days overdue)
 
