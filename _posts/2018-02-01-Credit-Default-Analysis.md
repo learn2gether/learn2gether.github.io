@@ -760,7 +760,7 @@ X.astype(float).info()
     memory usage: 1.1 MB
 
 # Building models
-## Logit
+## Logit Regression
 
 ```python
 from statsmodels.discrete.discrete_model import Logit, Probit
@@ -858,7 +858,10 @@ logit_model.summary2()
 
 According to above table, we can interpret some outcome outputs. There is a list of log likelihoods at each iteration. The first iteration is the log likelihood of the empty model without any predictors. At the next iteration, the predictor is considered in the model. At Each iteration, the log likelihood increases untill the maximum value. Pseudo R square reflects how well the model fit the data. If this value is closed to 1, it means that the model fit the data very well. However, pseduo R square values in both our probit and logit models are quite low, and we do not have a very goodness-of-fit for these models. 
 
-It appears that there are some predictors which are statistically significant (p-value is less than 0.05) including AGE, ADEPCNT, MAJORDRG, MINORDRG, OWNRENT, INCOME, EXP_INC and LOGSPEND. The Logit model is -0.2827 - 0.0130*AGE + 0.0936*ADEPCNT + 0.2469*MAJORDRG + 0.2251*MINORDRG - 0.2713*OWNRENT -0.0003*INCOME + 2.7837*EXP_INC - 0.2188*LOGSPEND
+It appears that there are some predictors which are statistically significant (p-value is less than 0.05) including AGE, ADEPCNT, MAJORDRG, MINORDRG, OWNRENT, INCOME, EXP_INC and LOGSPEND.
+
+![alt text](https://learn2gether.github.io/images/posts/creditDefault/logitModel.png "Logit Regression")
+
 By interpreting the coefficient, we normally interpret the sign of the coefficient but not the magnitude. The magnitude cannot be interpreted using the coefficient because different models have differnt scales of coeffcients. If the sign of the coefficient is positive, instead of saying higher predictor variable will lead to higher response variable, we will interpret that the response variable is more likely to be the category of 1. On the contrary, we will say that the response variable is less likely to be the category of 1 if the sign of the coefficient is negative. For example, as people get older, they are less likely to default.
 
 ###  Predicted probabilities and goodness of fit measures
