@@ -1,6 +1,6 @@
 ---
 title: "Titanic Analysis"
-date: 2019-01-01
+date: 2018-01-01
 tags: [machine learning, data science]
 # header:
 #     image: "images/posts/titanic.jpeg"
