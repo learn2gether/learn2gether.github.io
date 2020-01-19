@@ -7,6 +7,12 @@ tags: [machine learning, data science]
 excerpt: "Titanic Analysis by using machine learning algorithm such as Logistic Regression, Naive Bayes, Support Vector Machine, Decision Tree and Random Forest."
 ---
 
+- [Dataset](#dataset)
+- [Feature_Selection_and_Feature_Engineering]
+(#Feature Selection and Feature Engineering)
+- [Prediction](#Prediction)
+  * [Logistic-Regression](#Logistic Regression)
+
 # Dataset
 You can download the data from [Kaggle competition website](https://www.kaggle.com/c/titanic/data).
 
@@ -511,7 +517,7 @@ test5 = test4.drop(columns=['Sex'])
 validation5 = validation4.drop(columns=['Sex'])
 ```
 
-# prediction
+# Prediction
 
 
 ```python
@@ -727,7 +733,7 @@ y_valid = validation5.iloc[:, 0:1].to_numpy()
 ```
 
 
-## logistic regression
+## Logistic Regression
 
 
 ```python
