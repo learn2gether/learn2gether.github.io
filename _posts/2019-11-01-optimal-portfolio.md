@@ -1,6 +1,7 @@
 ---
 title: "Optimal Portfolio"
 date: 2019-11-01
+author: Yifei Luo
 tags: [finance analysis, data science, forecasting, stocks portfolio]
 # header:
 #     image: "images/posts/titanic.jpeg"
