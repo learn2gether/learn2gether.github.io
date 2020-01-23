@@ -10,7 +10,7 @@ excerpt: "A case study on investment by selecting stocks from S&P 500 for optima
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/optimal_portfolio.jpg "OPTIMAL PORTFOLIO")
 
-<br />
+<!-- <br /> -->
 
 - [Introduction](#introduction)
 - [Stocks Selecting](#stocks-selecting)
@@ -46,7 +46,7 @@ excerpt: "A case study on investment by selecting stocks from S&P 500 for optima
 
 <div style="text-align: justify"> In order to achieve portfolio optimization, we need to determine the number of stocks in the portfolio and what these stocks are. The client plan to invest $10 million dollars in companies listing on S&P 500. In order to select valuable stocks, I am going to build a portfolio including all companies on the list of S&P 500, and the list is extracted from the WIKIPEDIA “List of S&P 500 Companies”. Then, extracting and analyzing daily adjusted closing price for each stock in the past three years. All these data are extracting from the Yahoo Finance. The following figure shows the daily closing price from 2016 to 2019. There are 8 stocks containing missing values, which means that these companies went public after year 2016. Thus, we need to remove them from the list. </div>
 
-<!-- <br /> -->
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/stocks.png "Stocks")
 
@@ -84,7 +84,7 @@ ef.portfolio_performance(verbose=True)
 
 <div style="text-align: justify"> All selected companies and their stock codes are displayed on the following table. </div>
 
-<!-- <br /> -->
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/stocks_code.png "Stocks Code")
 
@@ -92,7 +92,7 @@ ef.portfolio_performance(verbose=True)
 
 <div style="text-align: justify"> Then, we can calculate the daily rate of return by closing prices of each stock. </div>
 
-<!-- <br /> -->
+<br />
 
 ```python
 StockReturns = stockPrices_selected.pct_change().dropna()
@@ -120,7 +120,7 @@ StockReturns = stockPrices_selected.pct_change().dropna()
 
 <div style="text-align: justify"> We multiply the rate of return of each stock by its corresponding weights to obtain the weighted stock returns, then summing the weighted returns of all stocks to get the return of the portfolio. The following figure shows the daily rate of return over-time. </div>
 
-<!-- <br /> -->
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/rate_of_return_assigned.png "Rate Of Return Assigned Weights")
 
@@ -138,7 +138,7 @@ StockReturns = stockPrices_selected.pct_change().dropna()
 
 <div style="text-align: justify"> The second option is to evenly distribute the weight of each stock so that they all have an equal weight. This is the easiest way to invest and can be used as a benchmark for other portfolios. The following figure shows the comparison of the cumulated return. The blue line represents the portfolio of the equal weight, and the orange line represents the portfolio of the given weight. We can conclude the benchmark outperforms the portfolio of the given weight. </div>
 
-<!-- <br /> -->
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/return_comparision1.png "Cumulative Return Assigned Vs. Equal")
 
@@ -157,7 +157,7 @@ StockReturns = stockPrices_selected.pct_change().dropna()
 <div style="text-align: justify"> The following figure presents the cumulative return of three portfolios. The green line represents the
 portfolio of the cumulative return. The benchmark seems to outperform the other two portfolios. </div>
 
-<!-- <br /> -->
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/return_comparision2.png "Return Comparision All Three")
 
@@ -169,7 +169,7 @@ portfolio of the cumulative return. The benchmark seems to outperform the other 
 
 <div style="text-align: justify"> The correlation matrix is used to estimate the linear relationship among multiple stocks. Each cell in the matrix is the correlation coefficient of its corresponding two stocks ranging from -1 to 1. If they are positive correlated, they tend to move together, which means they either increase together or decrease together. If they are negative correlated, they tend to move oppositely. The following figure presents the heatmap of the correlation matrix, which can easily visualize relationships. We can see that most stocks have positive correlations with other stocks. It may reflect that companies with the positive correlation may be in the same industry, or they may have mutual business. </div>
 
-<!-- <br /> -->
+<br />
 
 ```python
 # correlation
@@ -207,7 +207,7 @@ plt.show()
 
 <div style="text-align: justify"> Standard deviation is another measure of the risk, and it is also known as volatility. </div>
 
-<!-- <br /> -->
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/statistics_three_portfolios.png "Statistics Of Three Portfolios")
 
