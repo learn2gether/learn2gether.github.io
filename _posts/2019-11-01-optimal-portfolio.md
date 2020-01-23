@@ -12,6 +12,18 @@ excerpt: "A case study on investment by selecting stocks from S&P 500 for optima
 
 <br />
 
+- [Introduction](#introduction)
+- [Stocks Selecting](#stocks-selecting)
+- [Portfolio Return](#portfolio-return)
+  * [Portfolio with the given weights](#portfolio-with-the-given-weights)
+  * [Portfolio With The Equal Weight](#portfolio-with-the-equal-weight)
+  * [Portfolio Based On The Market Capitalization](#portfolio-based-on-the-market-capitalization)
+- [Correlation and covariance](#correlation-and-covariance)
+  * [Correlation](#correlation)
+  * [Covariance](#covariance)
+  * [Standard Deviation](#standard-deviation)
+
+
 # Introduction
 
 <div style="text-align: justify"> Every investor should know the acronym “TINSTAAFL”, which represents “There is no such thing as a free lunch”. This phrase emphasizes the concept of the trade-off between the risk and the return. The relatively high return also brings the high risk, and a lower risk is also likely to result in the lower return. Markowitz published a research about Portfolio Selection in 1952, and it introduced a Modern Portfolio Theory (MPT). This theory demonstrated several main points (Markowitz 1952). First, the return of a portfolio is a weighted average of the components of each asset, and its volatility is also affected by the correlation among assets. In addition, investors should not assess asset benefits independently, and they should understand how each asset is going to affect the effectiveness of the portfolio. Furthermore, investors should allocate their capital and resources into multiple assets rather than concentrating on one or a small number of assets, which is able to greatly reduce the volatility of the portfolio. </div>
@@ -34,11 +46,11 @@ excerpt: "A case study on investment by selecting stocks from S&P 500 for optima
 
 <div style="text-align: justify"> In order to achieve portfolio optimization, we need to determine the number of stocks in the portfolio and what these stocks are. The client plan to invest $10 million dollars in companies listing on S&P 500. In order to select valuable stocks, I am going to build a portfolio including all companies on the list of S&P 500, and the list is extracted from the WIKIPEDIA “List of S&P 500 Companies”. Then, extracting and analyzing daily adjusted closing price for each stock in the past three years. All these data are extracting from the Yahoo Finance. The following figure shows the daily closing price from 2016 to 2019. There are 8 stocks containing missing values, which means that these companies went public after year 2016. Thus, we need to remove them from the list. </div>
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/stocks.png "Stocks")
 
-<br />
+<!-- <br /> -->
 
 <div style="text-align: justify"> PyPortfolioOpt is a Python library, which can help find the portfolio that maximize the Sharpe ratio. The Sharpe ratio is a measure of risk adjusted returns. The following figure presents a set of weights of the optimal portfolio. We can notice that many stocks are assigned the weight of zero representing that they are not recommended stocks. </div>
 
@@ -56,41 +68,41 @@ print(cleaned_weights)
 ef.portfolio_performance(verbose=True)
 ```
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/weights_all_stocks.png "Weights of All Stocks")
 
-<br />
+<!-- <br /> -->
 
 <div style="text-align: justify"> There are only 25 stocks left with non-zero weights. Therefore, we are going to implement portfolio optimization based on these selected stocks. </div>
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/selected_stocks.png "Selected Stocks")
 
-<br />
+<!-- <br /> -->
 
 <div style="text-align: justify"> All selected companies and their stock codes are displayed on the following table. </div>
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/stocks_code.png "Stocks Code")
 
-<br />
+<!-- <br /> -->
 
 <div style="text-align: justify"> Then, we can calculate the daily rate of return by closing prices of each stock. </div>
 
-<br />
+<!-- <br /> -->
 
 ```python
 StockReturns = stockPrices_selected.pct_change().dropna()
 ```
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/rate_of_return.png "Rate Of Return")
 
-<br />
+<!-- <br /> -->
 
 # Portfolio Return
 
@@ -104,33 +116,33 @@ StockReturns = stockPrices_selected.pct_change().dropna()
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/assigned_weights.png "Assigned Weights")
 
-<br />
+<!-- <br /> -->
 
 <div style="text-align: justify"> We multiply the rate of return of each stock by its corresponding weights to obtain the weighted stock returns, then summing the weighted returns of all stocks to get the return of the portfolio. The following figure shows the daily rate of return over-time. </div>
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/rate_of_return_assigned.png "Rate Of Return Assigned Weights")
 
-<br />
+<!-- <br /> -->
 
 <div style="text-align: justify"> Then, we can calculate the cumulative return to present the yield curve shown as the following figure. </div>
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/cumulative_return_assigned.png "Cumulative Return Assigned Weights")
 
-<br />
+<!-- <br /> -->
 
 ## Portfolio With The Equal Weight
 
 <div style="text-align: justify"> The second option is to evenly distribute the weight of each stock so that they all have an equal weight. This is the easiest way to invest and can be used as a benchmark for other portfolios. The following figure shows the comparison of the cumulated return. The blue line represents the portfolio of the equal weight, and the orange line represents the portfolio of the given weight. We can conclude the benchmark outperforms the portfolio of the given weight. </div>
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/return_comparision1.png "Cumulative Return Assigned Vs. Equal")
 
-<br />
+<!-- <br /> -->
 
 ## Portfolio Based On The Market Capitalization
 
@@ -140,16 +152,16 @@ StockReturns = stockPrices_selected.pct_change().dropna()
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/market_capitalization.png "Market Capitalization")
 
-<br />
+<!-- <br /> -->
 
 <div style="text-align: justify"> The following figure presents the cumulative return of three portfolios. The green line represents the
 portfolio of the cumulative return. The benchmark seems to outperform the other two portfolios. </div>
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/return_comparision2.png "Return Comparision All Three")
 
-<br />
+<!-- <br /> -->
 
 # Correlation and covariance
 
@@ -157,7 +169,7 @@ portfolio of the cumulative return. The benchmark seems to outperform the other 
 
 <div style="text-align: justify"> The correlation matrix is used to estimate the linear relationship among multiple stocks. Each cell in the matrix is the correlation coefficient of its corresponding two stocks ranging from -1 to 1. If they are positive correlated, they tend to move together, which means they either increase together or decrease together. If they are negative correlated, they tend to move oppositely. The following figure presents the heatmap of the correlation matrix, which can easily visualize relationships. We can see that most stocks have positive correlations with other stocks. It may reflect that companies with the positive correlation may be in the same industry, or they may have mutual business. </div>
 
-<br />
+<!-- <br /> -->
 
 ```python
 # correlation
@@ -181,25 +193,25 @@ plt.yticks(rotation=0)
 plt.show()
 ```
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/return_heatmap.png "Return Heatmap")
 
-<br />
+<!-- <br /> -->
 
 ## Covariance
 
 <div style="text-align: justify"> The correlation coefficient only reflects the linear relationship between stocks, but it does not tell us the volatility of stocks, and the covariance matrix contains this information. Covariance is a measure to assess the risk of an asset relative to another asset. It is the correlation of yield between the two assets. If it is positive, it indicates that the return of one asset rises, the other is also rising. If the value of the covariance is negative, it indicates that they move in the opposite direction. In addition, if the absolute value of the covariance is bigger, the returns of the two assets have a strong relationship. On the contrary, if the absolute value is relatively small, it means that the returns of these two assets have a distant relationship. </div>
 
-## Standard deviation
+## Standard Deviation
 
 <div style="text-align: justify"> Standard deviation is another measure of the risk, and it is also known as volatility. </div>
 
-<br />
+<!-- <br /> -->
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/statistics_three_portfolios.png "Statistics Of Three Portfolios")
 
-<br />
+<!-- <br /> -->
 
 <div style="text-align: justify"> This table presents some statistical results of discussed portfolios above. The portfolio with the equal weights generates the maximum return, and the portfolio with the given weights generated the minimum risk. The portfolio based on the market capitalization is not recommended in our case. </div>
 
