@@ -17,7 +17,7 @@ excerpt: "A case study on investment by selecting stocks from S&P 500 for optima
   * [Portfolio with the maximum return](#portfolio-with-the-maximum-return)
   * [Portfolio with the best Sharpe Ratio](#portfolio-with-the-best-sharpe-ratio)
   * [Comparison of three optimal portfolios](#comparison-of-three-optimal-portfolios)
-- [Assessing Risk by VaR](#sssessing-risk-by-var)
+- [Assessing Risk by VaR](#assessing-risk-by-var)
   * [The Variance-covariance method](#the-variance-covariance-method)
   * [The Historical Method](#the-historical-method)
 - [Portfolio Beta](#portfolio-beta)
@@ -63,6 +63,8 @@ RandomPortfolios.columns = [ticker + "_weight" for stock in StockReturns.columns
 
 <div style="text-align: justify"> One strategy is to select the portfolio with the minimum volatility. This portfolio is the global minimum volatility portfolio (GMV). The GMV portfolio is marked by the red point. </div>
 
+<br />
+
 ```python
 min_index = RandomPortfolios.Volatility.idxmin()
 
@@ -77,11 +79,15 @@ plt.show()
 
 <div style="text-align: justify"> Then, we can calculate the cumulative return of the GMV portfolio to compare with the equal weight portfolio and the given weight portfolio. The green line represents the GMV portfolio. Obviously, its return is relatively smaller than the other two portfolios, which reflects the reality. </div>
 
+<br />
+
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/gmv_portfolio_comparision.png "GMV Portfolio Comparision")
 
 ## Portfolio with the maximum return
 
 <div style="text-align: justify"> One strategy is to select the portfolio with the maximum return. This portfolio is the global maximum return portfolio (GMR). The GMR portfolio is marked by the red point. </div>
+
+<br />
 
 ```python
 max_index_return = RandomPortfolios.Returns.idxmax()
@@ -96,6 +102,8 @@ plt.show()
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/gmr_portfolio.png "GMR Portfolio")
 
 <div style="text-align: justify"> Then, we can calculate the cumulative return of the GMR portfolio to compare with other portfolios. The oriange line represents the GMV portfolio. Obviously, its return is relatively higher than the other portfolios, but its risk is also higher, which also reflects the reality. </div>
+
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/gmr_portfolio_comparison.png "GMR Portfolio Comparison")
 
@@ -141,11 +149,15 @@ plt.show()
 
 <div style="text-align: justify"> Then, we can calculate the cumulative return of the portfolio with the largest Sharpe ratio to compare with other portfolios. The green line represents the MSR portfolio. Its return is relatively higher than the GMV portfolio, but lower than the GMR portfolio. </div>
 
+<br />
+
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/msr_portfolio_comparison.png "MSR Portfolio Comparison")
 
 ## Comparison of three optimal portfolios
 
 <div style="text-align: justify"> The following table presents some statistical results of discussed portfolios above. The GMV portfolio provides the lowest volatility but it also yields the lowest. The GMR portfolio generates the maximum return but it also comes with the highest risk. The MST portfolio implements the risk-return trade-off. These three portfolios are all optimal, and the decision is made depends on the risk preference of the client. </div>
+
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/statistics_optimal_portfolios.png "Statistics Optimal Portfolios")
 
@@ -205,7 +217,7 @@ plt.title("Rate of Return (%)", weight='bold')
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/var_gmr.png "VaR GMR")
 
-<br />
+<!-- <br /> -->
 
 <div style="text-align: justify"> The following figure presents the normal distribution of the optimal portfolio with the maximum Sharpe Ratio. If we use the confidence level of 95%, the rate of return is 1.05%. It means that there is a 95% chance that this portfolio will lose no more than 1.05% in a single day. If the investor invests 10 million to calculate the absolute amount, the 5% VaR for a single day is 0.0105 * 10 million = 105,000 dollars. </div>
 
@@ -238,25 +250,37 @@ plt.title("Rate of Return (%)", weight='bold')
 
 <div style="text-align: justify"> The following figure shows the VaR on percentage and dollars respectively for the GMV portfolio. As for the confidence interval of 95%, there is a 95% chance that this portfolio will lose no more than 0.993% in a single day. If the investor invests 10 million to calculate the absolute amount, the 5% VaR for a single day is 99,300 dollars. </div>
 
+<br />
+
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/var_gmv_loss.png "VaR GMV Loss")
 
 <div style="text-align: justify"> According to the following figure, there is a 95% chance that this portfolio will lose no more than 0.993% in a single day, which may happen 38 days over the three years. </div>
+
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/var_gmv_loss_plot.png "VaR GMV Loss Plot")
 
 <div style="text-align: justify"> The following figure shows the VaR on percentage and dollars respectively the GMR portfolio. As for the confidence interval of 95%, there is a 95% chance that this portfolio will lose no more than 1.52% in a single day. If the investor invests 10 million to calculate the absolute amount, the 5% VaR for a single day is 152,000 dollars. </div>
 
+<br />
+
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/var_gmr_loss.png "VaR GMR Loss")
 
 <div style="text-align: justify"> According to the following figure, there is a 95% chance that this portfolio will lose no more than 1.52% in a single day, which may happen 38 days over the three years. </div>
+
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/var_gmr_loss_plot.png "VaR GMR Loss Plot")
 
 <div style="text-align: justify"> The following figure shows the VaR on percentage and dollars respectively the MSR portfolio. As for the confidence interval of 95%, there is a 95% chance that this portfolio will lose no more than 1.09% in a single day. If the investor invests 10 million to calculate the absolute amount, the 5% VaR for a single day is 109,000 dollars. </div>
 
+<br />
+
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/var_msr_loss.png "VaR MSR Loss")
 
 <div style="text-align: justify"> According to the following figure, there is a 95% chance that this portfolio will lose no more than 1.09% in a single day, which may happen 38 days over the three years. </div>
+
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/var_msr_loss_plot.png "VaR MSR Loss Plot")
 
@@ -272,13 +296,19 @@ plt.title("Rate of Return (%)", weight='bold')
 
 <div style="text-align: justify"> According to the following figure, we can see that the portfolio of the minimum risk has a small volatility compared to the market portfolio, and it has a beta value of 0.657. </div>
 
+<br />
+
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/gmv_volatility.png "GMV Volatility")
 
 <div style="text-align: justify"> According to the following figure, we can see that the portfolio of the maximum return has a relatively large volatility compared to the market portfolio, and it has a beta value of 1.011. </div>
 
+<br />
+
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/gmr_volatility.png "GMR Volatility")
 
 <div style="text-align: justify"> According to the following figure, we can see that the portfolio of the largest Sharpe Ratio has a small volatility compared to the market portfolio, and it has a beta value of 0.729. </div>
+
+<br />
 
 ![alt text](https://learn2gether.github.io/images/posts/portfolio/msr_volatility.png "MSR Volatility")
 
